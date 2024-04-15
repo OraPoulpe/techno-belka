@@ -1,8 +1,6 @@
 'use client';
 
-import LoginScreen from "@/screens/login/ui/LoginScreen";
-
-
+import LoginScreen from '@/screens/login/ui/LoginScreen';
 
 export default function Login() {
   return (

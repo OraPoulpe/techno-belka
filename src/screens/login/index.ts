@@ -1,1 +1,1 @@
-export { default as loginScreen } from './ui/LoginScreen'
+export { default as LoginScreen } from './ui/LoginScreen'

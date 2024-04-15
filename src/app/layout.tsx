@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Providers } from '@/shared/lib/store/providers';
-import StyledComponentsRegistry from './registry';
 import ConfigProviderAntd from '@/shared/antd/config.provider';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 export const metadata: Metadata = {
   title: 'Techno Belka',
@@ -17,11 +17,11 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body>
-        <StyledComponentsRegistry>
+        <AntdRegistry>
           <ConfigProviderAntd>
             <Providers>{children}</Providers>
           </ConfigProviderAntd>
-        </StyledComponentsRegistry>
+        </AntdRegistry>
       </body>
     </html>
   );

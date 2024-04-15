@@ -3,7 +3,6 @@ export interface ILoginData {
   password: string;
 }
 
-export interface IToken {
-  auth_token: string;
+export interface IResponse {
+  accessToken: string;
 }
-
