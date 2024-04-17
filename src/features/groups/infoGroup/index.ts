@@ -1,0 +1,1 @@
+export { default as InfoGroup } from './ui/InfoGroup'

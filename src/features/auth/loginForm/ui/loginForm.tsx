@@ -1,10 +1,16 @@
+'use client';
+
 import { Button, Form, Input, message } from 'antd';
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { useLoginUserMutation } from '../api/loginApi';
+import { useLoginUserMutation } from '@/shared/api/auth/loginApi';
 import { ILoginData } from '@/shared/interfaces/login.interface';
 import type { FormProps } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import styles from './LoginForm.module.scss';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+
+import logo_school from '@/../public/assets/logo_school_800.svg';
 
 const LoginForm = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -12,13 +18,15 @@ const LoginForm = () => {
 
   const [isButtonDisable, setButtonDisable] = useState<boolean>(false);
 
-  const ErrorMassage = () => {
+  const router = useRouter();
+
+  const errorMassage = () => {
     messageApi.open({
       type: 'error',
       content: 'Неправильный логин или пароль',
     });
   };
-  const SuccessMassage = () => {
+  const successMassage = () => {
     messageApi.open({
       type: 'success',
       content: 'Вы авторизованны',
@@ -35,7 +43,7 @@ const LoginForm = () => {
     const res = await loginUser(values);
 
     if ('error' in res) {
-      ErrorMassage();
+      errorMassage();
       form.setFields([
         {
           name: 'password',
@@ -47,22 +55,29 @@ const LoginForm = () => {
         },
       ]);
     } else if ('data' in res) {
-      SuccessMassage();
+      successMassage();
       form.resetFields();
       localStorage.setItem('token', res.data.accessToken);
+      router.push('/groups');
     }
   };
 
   return (
     <div className={styles.form__wrap}>
       {contextHolder}
+      <Image
+        className={styles.school__logo}
+        src={logo_school.src}
+        width={145}
+        height={36}
+        alt="Школа 800"
+      />
       <Form
         form={form}
         name="login"
         layout="vertical"
         className={styles.form}
         onFinish={handleLoginFinish}
-       
       >
         <Form.Item
           name="login"

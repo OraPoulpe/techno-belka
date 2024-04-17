@@ -1,0 +1,1 @@
+import {default as RatingStudents} from './ui/RatingStudents'

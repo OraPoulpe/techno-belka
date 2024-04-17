@@ -1,0 +1,23 @@
+.button__wrap {
+  width: 417px;
+  height: 211px;
+  border-radius: 16px;
+  border: 1.5px #007c81 dashed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  &:hover {
+    //   border: 2px #3b4365 dashed;
+      background-color: #f5f9fd;
+  }
+  &:hover .span__text {
+    // color: #3b4365;
+  }
+
+  .span__text {
+    font-size: 24px;
+    font-weight: 400;
+    color: #007c81;
+  }
+}

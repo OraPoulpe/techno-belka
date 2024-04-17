@@ -1,0 +1,1 @@
+export { default as GroupViewScreen } from './ui/GroupViewScreen'
